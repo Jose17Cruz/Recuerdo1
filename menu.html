@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menú del Amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', cursive, sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%), url('https://wallpapercave.com/wp/wp7151688.jpg') no-repeat center center fixed;
+      background-blend-mode: multiply;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 20px 10px 15px 10px;
+      text-align: center;
+      box-shadow: 0 0 25px #ff00f7, 0 0 40px #00f7ff inset;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00f7ff;
+      animation: headerGlow 2s infinite alternate;
+    }
+
+    @keyframes headerGlow {
+      from { box-shadow: 0 0 25px #ff00f7, 0 0 40px #00f7ff inset; }
+      to { box-shadow: 0 0 40px #00f7ff, 0 0 60px #ff00f7 inset; }
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00f7ff;
+      text-shadow: 0 0 20px #00f7ff, 0 0 10px #ff00f7;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      animation: titlePulse 2s infinite alternate;
+    }
+
+    @keyframes titlePulse {
+      from { text-shadow: 0 0 20px #00f7ff, 0 0 10px #ff00f7; }
+      to { text-shadow: 0 0 40px #ff00f7, 0 0 20px #00f7ff; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    nav button {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ff00f7 0%, #00f7ff 100%);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff00f7, 0 0 10px #00f7ff inset;
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav button::after {
+      content: '❤';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+      color: #ff00f7;
+      font-size: 1.2em;
+      transition: transform 0.3s;
+    }
+
+    nav button:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 0 30px #00f7ff, 0 0 30px #ff00f7 inset;
+      background: linear-gradient(90deg, #00f7ff 0%, #ff00f7 100%);
+    }
+
+    nav button:hover::after {
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .content {
+      padding: 40px 10vw 30px 10vw;
+      display: none;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      background: rgba(0,0,0,0.7);
+      border-radius: 18px;
+      margin: 30px auto 0 auto;
+      box-shadow: 0 0 30px #00f7ff, 0 0 10px #ff00f7 inset;
+      max-width: 900px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #00f7ff, 0 0 10px #ff00f7 inset;
+      transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s;
+      filter: grayscale(10%) brightness(1.1);
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.12) rotate(-2deg);
+      box-shadow: 0 0 40px #ff00f7, 0 0 30px #00f7ff inset;
+      filter: grayscale(0%) brightness(1.2);
+    }
+
+    /* Animación de corazones flotando */
+    .corazones {
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .corazon {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0.7;
+      animation: flotar 6s linear infinite;
+    }
+    @keyframes flotar {
+      0% { transform: translateY(100vh) scale(1); opacity: 0.7; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="corazones"></div>
+  <header>
+    <h1>💖 Menú de Recuerdos de Jose & Mari 💖</h1>
+    <nav>
+      <button onclick="mostrarSeccion('meses')">Nuestros Meses ✨</button>
+      <button onclick="mostrarSeccion('recuerdos')">Recuerdos 📸</button>
+    </nav>
+  </header>
+
+  <!-- Sección Meses -->
+  <div id="meses" class="content">
+    <h2 style="font-size:2em; color:#ff00f7; text-shadow:0 0 10px #00f7ff;">✨ Nuestros Meses Juntos ✨</h2>
+    <p id="resumen" style="font-size: 20px; margin-top: 18px;"></p>
+    <div id="fraseMes" style="margin-top:30px; font-style:italic; color:#00f7ff; font-size:1.2em;"></div>
+  </div>
+
+  <!-- Sección Recuerdos -->
+  <div id="recuerdos" class="content">
+    <h2 style="font-size:2em; color:#00f7ff; text-shadow:0 0 10px #ff00f7;">📸 Nuestros Recuerdos</h2>
+    <div class="image-grid">
+      <div style="position:relative;">
+        <img src="1.jpg" alt="Recuerdo 1">
+        <div style="position:absolute;bottom:10px;left:0;right:0;padding:6px 8px;background:rgba(0,0,0,0.65);color:#ff00f7;font-size:1em;border-radius:0 0 12px 12px;backdrop-filter:blur(2px);">Nuestro primer corazón juntos 💖</div>
+      </div>
+      <div style="position:relative;">
+        <img src="2.jpg" alt="Recuerdo 2">
+        <div style="position:absolute;bottom:10px;left:0;right:0;padding:6px 8px;background:rgba(0,0,0,0.65);color:#00f7ff;font-size:1em;border-radius:0 0 12px 12px;backdrop-filter:blur(2px);">Ella, se ve bonita sentada ✨</div>
+      </div>
+      <div style="position:relative;">
+        <img src="3.jpg" alt="Recuerdo 3">
+        <div style="position:absolute;bottom:10px;left:0;right:0;padding:6px 8px;background:rgba(0,0,0,0.65);color:#fff;font-size:1em;border-radius:0 0 12px 12px;backdrop-filter:blur(2px);">Un viernes inolvidable juntos 🗓️</div>
+      </div>
+      <div style="position:relative;">
+        <img src="4.jpg" alt="Recuerdo 4">
+        <div style="position:absolute;bottom:10px;left:0;right:0;padding:6px 8px;background:rgba(0,0,0,0.65);color:#ff00f7;font-size:1em;border-radius:0 0 12px 12px;backdrop-filter:blur(2px);">Yo, pensando en ti 😎</div>
+      </div>
+    </div>
+    <div style="margin-top:30px; color:#fff; font-size:1.1em;">Cada recuerdo es una chispa más en nuestra historia. ¡Gracias por cada momento juntos! 💖</div>
+  </div>
+
+  <script>
+    // Animación de corazones flotando
+    function crearCorazones() {
+      const corazones = document.querySelector('.corazones');
+      for (let i = 0; i < 18; i++) {
+        const corazon = document.createElement('span');
+        corazon.className = 'corazon';
+        corazon.innerHTML = ['💖','💞','💕','💓','💗','💘','💝'][Math.floor(Math.random()*7)];
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.animationDelay = (Math.random() * 6) + 's';
+        corazon.style.fontSize = (1.5 + Math.random()*2.5) + 'em';
+        corazones.appendChild(corazon);
+      }
+    }
+    crearCorazones();
+
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      if (id === "meses") {
+        calcularMeses();
+        mostrarFraseMes();
+      }
+    }
+
+    function calcularMeses() {
+      const resumen = document.getElementById("resumen");
+      const hoy = new Date();
+      const inicio = new Date("2025-03-31");
+      if (hoy < inicio) {
+        resumen.innerHTML = "🥹 Aún no han comenzado su historia de amor. ¡Faltan días hermosos por venir!";
+        document.getElementById("fraseMes").innerHTML = '';
+        return;
+      }
+      let años = hoy.getFullYear() - inicio.getFullYear();
+      let meses = hoy.getMonth() - inicio.getMonth();
+      let totalMeses = años * 12 + meses;
+      if (hoy.getDate() < inicio.getDate()) {
+        totalMeses--;
+      }
+      const proximo = new Date(inicio);
+      proximo.setMonth(inicio.getMonth() + totalMeses + 1);
+      const unDia = 1000 * 60 * 60 * 24;
+      const diasRestantes = Math.ceil((proximo - hoy) / unDia);
+      resumen.innerHTML = `
+        🗓️ Fecha de aniversario: <strong>31 de marzo de 2025</strong><br><br>
+        💞 llevamos <strong>${totalMeses} mes${totalMeses === 1 ? '' : 'es'}</strong> juntos.<br><br>
+        ⏳ Faltan <strong>${diasRestantes}</strong> día${diasRestantes === 1 ? '' : 's'} para el próximo mesversario. 💖
+      `;
+    }
+
+    // Frases románticas aleatorias para cada mes
+    function mostrarFraseMes() {
+      const frases = [
+        "El amor no mira con los ojos, sino con el alma. 💫",
+        "Cada mes contigo es un capítulo más de nuestra historia. 📖",
+        "Eres mi casualidad más bonita. 🌟",
+        "Contigo, todos los días son especiales. 🥰",
+        "Nuestro amor es mi lugar favorito. 🏡",
+        "Gracias por existir en mi vida. 💝",
+        "Juntos, el tiempo vuela y el amor crece. ⏳💖",
+        "Eres mi sueño hecho realidad. ✨",
+        "Amar es encontrar en la felicidad del otro la propia felicidad. 💞",
+        "No hay distancia ni tiempo que apague lo que siento por ti. 🔥"
+      ];
+      const frase = frases[Math.floor(Math.random()*frases.length)];
+      document.getElementById("fraseMes").innerHTML = frase;
+    }
+
+    // Mostrar sección por defecto
+    mostrarSeccion('meses');
+  </script>
+</body>
+</html>
